@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="Bot_Arm">
+    <xacro:include filename="$(find pick_and_place)/urdf/my_materials.urdf.xacro"/>
+    <link name="base_link">
+        <visual>
+            <geometry>
+                <box size="0.1 0.1 0.1"/>
+            </geometry>
+            <material name="blue"/>
+        </visual>
+    </link>
+    <link name="link1">
+        <visual>
+            <geometry>
+                <box size="0.1 0.1 0.1"/>
+            </geometry>
+            <material name="red"/>
+        </visual>
+    </link>
+    <link name="link2">
+        <visual>
+            <geometry>
+                <box size="0.1 0.1 0.1"/>
+            </geometry>
+            <material name="green"/>
+        </visual>
+    </link>
+
+    <joint name="joint1" type="revolute">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <parent link="base_link"/>
+        <child link="link1"/>
+        <axis xyz="0 0 1"/>
+        <limit lower="-3.14159" upper="3.14159"/>
+    </joint>
+
+    <joint name="joint2" type="revolute">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <parent link="link1"/>
+        <child link="link2"/>
+        <axis xyz="0 0 1"/>
+        <limit lower="-3.14159" upper="3.14159"/>
+    </joint>
+
+    
+</robot>
